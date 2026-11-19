@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>🎓 EduManage</h2>
+  <a href="#" class="active" onclick="showPage('dashboard')">Dashboard</a>
+  <a href="#" onclick="showPage('students')">Students</a>
+  <a href="#" onclick="showPage('attendance')">Attendance</a>
+  <a href="#" onclick="showPage('grades')">Grades</a>
+</div>
+
+<main class="main">
+  <header>
+    <h1>Student Management</h1>
+    <span>Admin Panel</span>
+  </header>
+
+  <section id="dashboard" class="page">
+    <h2>Dashboard Overview</h2>
+    <div class="stats">
+      <div class="stat">
+        <h3>Total Students</h3>
+        <p id="totalStudents">0</p>
+      </div>
+      <div class="stat">
+        <h3>Present Today</h3>
+        <p id="presentCount">0</p>
+      </div>
+      <div class="stat">
+        <h3>Average Grade</h3>
+        <p id="averageGrade">0%</p>
+      </div>
+    </div>
+    <h2>Recent Students</h2>
+    <div id="recentStudents"></div>
+  </section>
+
+  <section id="students" class="page hidden">
+    <div class="heading">
+      <h2>Student Records</h2>
+      <button onclick="openForm()">+ Add Student</button>
+    </div>
+    <input id="search" placeholder="Search students..." oninput="renderStudents()">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Marks</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentList"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="attendance" class="page hidden">
+    <h2>Attendance Management</h2>
+    <div id="attendanceList"></div>
+  </section>
+
+  <section id="grades" class="page hidden">
+    <h2>Student Grades</h2>
+    <div id="gradeList"></div>
+  </section>
+</main>
+
+<div id="studentModal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="formTitle">Add Student</h2>
+    <input id="name" placeholder="Student Name">
+    <input id="email" type="email" placeholder="Email">
+    <input id="course" placeholder="Course">
+    <input id="marks" type="number" min="0" max="100" placeholder="Marks (0-100)">
+    <div class="actions">
+      <button onclick="saveStudent()">Save Student</button>
+      <button class="cancel" onclick="closeForm()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
